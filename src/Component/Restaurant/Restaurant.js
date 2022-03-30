@@ -35,6 +35,8 @@ const savedOrder=[];
 for(const id in storedOrder){
 const addedMeal=meals.find(meal=>meal.idMeal===id)
 if(addedMeal){
+    const quantity=storedOrder[id]
+    addedMeal.quantity=quantity
     savedOrder.push(addedMeal)
 }}
 setOrders(savedOrder)
