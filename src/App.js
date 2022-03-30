@@ -1,11 +1,11 @@
 import './App.css';
-import Restaurant from './components/Restaurant/Restaurant';
-import Header from './components/Header/Header';
+import Header from './Component/Header/Header';
+import Restaurant from './Component/Restaurant/Restaurant';
 
 function App() {
   return (
     <div className="App">
-      <Header></Header>
+     <Header></Header>
       <Restaurant></Restaurant>
     </div>
   );
