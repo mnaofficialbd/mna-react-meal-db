@@ -41,8 +41,19 @@ if(addedMeal){
 }}
 setOrders(savedOrder)
         },[meals])
+
 const handleAddToOrder=meal=>{
-    const newOrders=[...orders,meal]
+    let newOrders=[];
+    const exists=orders.find(m=>m.idMeal===meal.idMeal);
+    if(exists){
+        const rest=orders.filter(m=>m.idMeal!==meal.idMeal)
+        exists.quantity=exists+1;
+        newOrders=[...rest,exists]
+    }
+    else{
+        meal.quantity=1;
+        newOrders=[...orders,meal]
+    }
     setOrders(newOrders)
     addToDb(meal.idMeal)
 
