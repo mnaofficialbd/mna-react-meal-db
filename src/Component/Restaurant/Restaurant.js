@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { addToDb } from '../../utilities/fakedb';
+import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Meal from '../Meal/Meal';
 import OrderList from '../OrderList/OrderList';
 import './Restaurant.css';
@@ -28,6 +28,17 @@ const Restaurant = () => {
         if  you need help, let us know in the support session
     */
     
+        useEffect(()=>{
+const storedOrder=getStoredCart();
+const savedOrder=[];
+
+for(const id in storedOrder){
+const addedMeal=meals.find(meal=>meal.idMeal===id)
+if(addedMeal){
+    savedOrder.push(addedMeal)
+}}
+setOrders(savedOrder)
+        },[meals])
 const handleAddToOrder=meal=>{
     const newOrders=[...orders,meal]
     setOrders(newOrders)
