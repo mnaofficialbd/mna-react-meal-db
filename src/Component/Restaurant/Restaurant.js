@@ -46,8 +46,8 @@ const handleAddToOrder=meal=>{
     let newOrders=[];
     const exists=orders.find(m=>m.idMeal===meal.idMeal);
     if(exists){
-        const rest=orders.filter(m=>m.idMeal!==meal.idMeal)
-        exists.quantity=exists+1;
+        const rest=orders.filter(m=>m.idMeal !== meal.idMeal)
+        exists.quantity=exists.quantity+1;
         newOrders=[...rest,exists]
     }
     else{
